@@ -1,0 +1,56 @@
+﻿============================= test session starts =============================
+platform win32 -- Python 3.10.5, pytest-9.0.2, pluggy-1.6.0 -- C:\Users\86135\AppData\Local\Programs\Python\Python310\python.exe
+cachedir: .pytest_cache
+rootdir: E:\TidyPaper
+configfile: pyproject.toml
+plugins: anyio-4.12.1, langsmith-0.6.7
+collecting ... collected 39 items
+
+..\TidyPaper\tests\unit\test_duplicate.py::TestCheckDuplicate::test_hash_duplicate PASSED [  2%]
+..\TidyPaper\tests\unit\test_duplicate.py::TestCheckDuplicate::test_doi_duplicate PASSED [  5%]
+..\TidyPaper\tests\unit\test_duplicate.py::TestCheckDuplicate::test_arxiv_duplicate PASSED [  7%]
+..\TidyPaper\tests\unit\test_duplicate.py::TestCheckDuplicate::test_title_duplicate PASSED [ 10%]
+..\TidyPaper\tests\unit\test_duplicate.py::TestCheckDuplicate::test_no_duplicate PASSED [ 12%]
+..\TidyPaper\tests\unit\test_duplicate.py::TestCheckDuplicate::test_empty_database PASSED [ 15%]
+..\TidyPaper\tests\unit\test_filename.py::TestSanitizeFilename::test_removes_windows_illegal_chars PASSED [ 17%]
+..\TidyPaper\tests\unit\test_filename.py::TestSanitizeFilename::test_collapses_consecutive_spaces PASSED [ 20%]
+..\TidyPaper\tests\unit\test_filename.py::TestSanitizeFilename::test_collapses_consecutive_dots PASSED [ 23%]
+..\TidyPaper\tests\unit\test_filename.py::TestSanitizeFilename::test_strips_leading_trailing_dots_and_spaces PASSED [ 25%]
+..\TidyPaper\tests\unit\test_filename.py::TestSanitizeFilename::test_truncates_long_names PASSED [ 28%]
+..\TidyPaper\tests\unit\test_filename.py::TestSanitizeFilename::test_empty_string_returns_untitled PASSED [ 30%]
+..\TidyPaper\tests\unit\test_filename.py::TestSanitizeFilename::test_only_illegal_chars_returns_untitled PASSED [ 33%]
+..\TidyPaper\tests\unit\test_filename.py::TestSanitizeFilename::test_normal_academic_title PASSED [ 35%]
+..\TidyPaper\tests\unit\test_filename.py::TestSanitizeFilename::test_title_with_colon PASSED [ 38%]
+..\TidyPaper\tests\unit\test_filename.py::TestSanitizeFilename::test_preserves_hyphens_and_parentheses PASSED [ 41%]
+..\TidyPaper\tests\unit\test_naming.py::TestGenerateFilename::test_default_template PASSED [ 43%]
+..\TidyPaper\tests\unit\test_naming.py::TestGenerateFilename::test_missing_venue PASSED [ 46%]
+..\TidyPaper\tests\unit\test_naming.py::TestGenerateFilename::test_missing_year PASSED [ 48%]
+..\TidyPaper\tests\unit\test_naming.py::TestGenerateFilename::test_all_missing PASSED [ 51%]
+..\TidyPaper\tests\unit\test_naming.py::TestGenerateFilename::test_custom_template PASSED [ 53%]
+..\TidyPaper\tests\unit\test_naming.py::TestGenerateFilename::test_illegal_chars_in_title PASSED [ 56%]
+..\TidyPaper\tests\unit\test_naming.py::TestGenerateFilename::test_very_long_title PASSED [ 58%]
+..\TidyPaper\tests\unit\test_resolver.py::TestExtractDoi::test_standard_doi PASSED [ 61%]
+..\TidyPaper\tests\unit\test_resolver.py::TestExtractDoi::test_doi_in_url PASSED [ 64%]
+..\TidyPaper\tests\unit\test_resolver.py::TestExtractDoi::test_doi_in_pdf_text PASSED [ 66%]
+..\TidyPaper\tests\unit\test_resolver.py::TestExtractDoi::test_no_doi PASSED [ 69%]
+..\TidyPaper\tests\unit\test_resolver.py::TestExtractDoi::test_empty_string PASSED [ 71%]
+..\TidyPaper\tests\unit\test_resolver.py::TestExtractDoi::test_strips_trailing_dot PASSED [ 74%]
+..\TidyPaper\tests\unit\test_resolver.py::TestExtractArxivId::test_new_style PASSED [ 76%]
+..\TidyPaper\tests\unit\test_resolver.py::TestExtractArxivId::test_new_style_with_version PASSED [ 79%]
+..\TidyPaper\tests\unit\test_resolver.py::TestExtractArxivId::test_from_url PASSED [ 82%]
+..\TidyPaper\tests\unit\test_resolver.py::TestExtractArxivId::test_from_pdf_url PASSED [ 84%]
+..\TidyPaper\tests\unit\test_resolver.py::TestExtractArxivId::test_no_arxiv PASSED [ 87%]
+..\TidyPaper\tests\unit\test_resolver.py::TestExtractArxivId::test_from_filename PASSED [ 89%]
+..\TidyPaper\tests\unit\test_resolver.py::TestExtractVenueHints::test_known_venues PASSED [ 92%]
+..\TidyPaper\tests\unit\test_resolver.py::TestExtractVenueHints::test_proceedings_pattern PASSED [ 94%]
+..\TidyPaper\tests\unit\test_resolver.py::TestExtractVenueHints::test_multiple_venues PASSED [ 97%]
+..\TidyPaper\tests\unit\test_resolver.py::TestExtractVenueHints::test_no_venue PASSED [100%]
+
+============================== warnings summary ===============================
+C:\Users\86135\AppData\Local\Programs\Python\Python310\lib\site-packages\_pytest\config\__init__.py:1428
+  C:\Users\86135\AppData\Local\Programs\Python\Python310\lib\site-packages\_pytest\config\__init__.py:1428: PytestConfigWarning: Unknown config option: asyncio_mode
+  
+    self._warn_or_fail_if_strict(f"Unknown config option: {key}\n")
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+======================== 39 passed, 1 warning in 0.43s ========================
