@@ -1,0 +1,12 @@
+{
+  "manifest_version": 3,
+  "name": "TidyPaper",
+  "description": "Route recognized paper PDFs into Downloads/Papers.",
+  "version": "0.1.0",
+  "permissions": [
+    "downloads"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  }
+}

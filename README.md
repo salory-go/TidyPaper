@@ -1,91 +1,60 @@
 # TidyPaper
 
-A minimalist academic paper PDF organizer for researchers.
+TidyPaper is a minimal Chrome extension that routes recognized academic paper PDFs into `Downloads/Papers`.
 
-TidyPaper automatically identifies paper metadata and organizes your messy PDF downloads into a clean, structured file system.
+## What It Does
 
-## Features (v0.1 MVP)
+- Intercepts downloads with `chrome.downloads.onDeterminingFilename`
+- Detects likely paper PDFs from a conservative academic-domain allowlist
+- Rewrites the target path to `Downloads/Papers/<filename>.pdf`
+- Leaves every non-paper download untouched
 
-- **Scan & Parse** — Batch scan directories for PDF papers
-- **Metadata Extraction** — Extract title, authors, DOI, arXiv ID from PDFs
-- **External Lookup** — Query Crossref, arXiv, OpenAlex for accurate metadata
-- **Auto Rename** — Generate standardized filenames (e.g. `2025 - ICLR - Paper Title.pdf`)
-- **Auto Archive** — Organize into `Papers/{year}/{venue}/` structure
-- **Preview & Confirm** — Review changes before applying
-- **Undo** — Revert the last batch operation
-- **Duplicate Detection** — Detect duplicates via hash, DOI, arXiv ID, or title similarity
+## Current MVP Boundary
 
-## Quick Start
+- The extension can only suggest a path relative to Chrome's default `Downloads` directory.
+- It cannot force the system save dialog to open at an arbitrary absolute path like `D:\Papers`.
+- If Chrome has `Ask where to save each file before downloading` enabled, the save dialog will open with `Downloads/Papers` preselected for recognized papers.
+- If that Chrome setting is disabled, recognized papers will be saved directly into `Downloads/Papers`.
 
-```bash
-pip install -e ".[dev]"
-tidypaper scan ./my-papers
-tidypaper apply
-tidypaper undo
-```
+## Supported Sources
 
-## Requirements
+The MVP uses a fixed allowlist and only reroutes PDF-like downloads from:
 
-- Python 3.10+
-- `pip`
+- `arxiv.org`
+- `openreview.net`
+- `aclanthology.org`
+- `proceedings.mlr.press`
+- `papers.nips.cc`
+- `proceedings.neurips.cc`
+- `dl.acm.org`
+- `ieeexplore.ieee.org`
+- `link.springer.com`
+- `sciencedirect.com`
+- `nature.com`
 
-## Installation
+## Install
 
-```bash
-git clone https://github.com/salory-go/TidyPaper.git
-cd TidyPaper
-python -m venv .venv
-```
+1. Open Chrome and go to `chrome://extensions`.
+2. Enable `Developer mode`.
+3. Click `Load unpacked`.
+4. Select this repository folder.
 
-Activate the virtual environment:
+## Recommended Chrome Setting
 
-```bash
-# PowerShell
-.venv\Scripts\Activate.ps1
+To get the confirmation flow from the system save dialog:
 
-# bash / zsh
-source .venv/bin/activate
-```
+1. Open Chrome settings.
+2. Go to `Downloads`.
+3. Enable `Ask where to save each file before downloading`.
 
-Install the project in editable mode:
+## Manual Test
 
-```bash
-pip install -e ".[dev]"
-```
+1. With the Chrome downloads prompt enabled, download a PDF from arXiv.
+2. Confirm the save dialog defaults to `Downloads/Papers`.
+3. Download a non-paper file such as a ZIP or PNG.
+4. Confirm the extension does not rewrite that path.
 
-## Run Locally
+## Notes
 
-Show the CLI entrypoint and available commands:
-
-```bash
-tidypaper --help
-```
-
-Typical workflow:
-
-```bash
-# Preview how PDFs will be renamed and organized
-tidypaper scan ./my-papers
-
-# Apply the staged plan
-tidypaper apply
-
-# Undo the latest successful batch
-tidypaper undo
-```
-
-Useful options:
-
-```bash
-tidypaper scan ./my-papers --archive-root ./Papers
-tidypaper scan ./my-papers --no-recursive
-tidypaper apply --min-confidence 0.85
-tidypaper apply --include-duplicates
-tidypaper config
-```
-
-By default, staging data and the SQLite database are stored under `~/.tidypaper/`. You can override the database location with `--db-path`.
-
-## License
-
-MIT
+- If another installed extension also overrides download filenames, Chrome applies the suggestion from the last-installed extension that responds.
+- The extension does not use any remote API, popup UI, options page, or local database.
