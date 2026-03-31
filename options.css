@@ -1,0 +1,266 @@
+:root {
+  color-scheme: light;
+  --bg: #f3efe6;
+  --panel: #fffaf1;
+  --border: #d9cdb8;
+  --text: #1e1a16;
+  --muted: #6f665c;
+  --accent: #0f6d54;
+  --accent-strong: #0c583d;
+  --danger: #a33c2d;
+  --shadow: 0 18px 40px rgba(38, 29, 15, 0.08);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", "PingFang SC", sans-serif;
+  color: var(--text);
+  background:
+    radial-gradient(circle at top right, rgba(15, 109, 84, 0.14), transparent 24rem),
+    linear-gradient(180deg, #fbf7ef 0%, var(--bg) 100%);
+}
+
+code,
+input,
+button {
+  font: inherit;
+}
+
+.layout {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 40px 20px 56px;
+}
+
+.hero {
+  margin-bottom: 24px;
+}
+
+.eyebrow {
+  margin: 0 0 10px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+h1,
+h2,
+h3,
+p,
+ol {
+  margin: 0;
+}
+
+h1 {
+  font-size: 40px;
+  line-height: 1.1;
+}
+
+h2 {
+  font-size: 22px;
+  line-height: 1.2;
+}
+
+.intro,
+.panel-copy,
+.field-help,
+.meta,
+.status,
+.empty-state {
+  color: var(--muted);
+}
+
+.intro {
+  max-width: 720px;
+  margin-top: 10px;
+  line-height: 1.6;
+}
+
+.panel {
+  margin-top: 20px;
+  padding: 24px;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  box-shadow: var(--shadow);
+}
+
+.panel-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.status {
+  min-height: 24px;
+  margin-bottom: 12px;
+  font-weight: 600;
+}
+
+.status[data-tone="error"] {
+  color: var(--danger);
+}
+
+.status[data-tone="success"] {
+  color: var(--accent);
+}
+
+.empty-state {
+  padding: 18px;
+  border: 1px dashed var(--border);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.55);
+}
+
+.rule-list {
+  display: grid;
+  gap: 14px;
+  padding: 0;
+  list-style: none;
+}
+
+.rule-card {
+  display: grid;
+  gap: 16px;
+  padding: 18px;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.65);
+}
+
+.rule-top {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.rule-title-row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  background: rgba(15, 109, 84, 0.12);
+  color: var(--accent);
+}
+
+.badge.disabled {
+  background: rgba(111, 102, 92, 0.14);
+  color: var(--muted);
+}
+
+.meta {
+  display: grid;
+  gap: 6px;
+  margin-top: 10px;
+  line-height: 1.5;
+}
+
+.rule-actions,
+.form-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.rule-form {
+  display: grid;
+  gap: 12px;
+  margin-top: 18px;
+}
+
+label {
+  font-weight: 600;
+}
+
+input {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.9);
+  color: var(--text);
+}
+
+input:focus {
+  outline: 2px solid rgba(15, 109, 84, 0.16);
+  border-color: var(--accent);
+}
+
+.switch-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.switch-row input {
+  width: auto;
+  transform: scale(1.15);
+}
+
+button {
+  border: none;
+  border-radius: 12px;
+  padding: 11px 16px;
+  cursor: pointer;
+  transition: transform 120ms ease, background-color 120ms ease;
+}
+
+button:hover {
+  transform: translateY(-1px);
+}
+
+.primary-button {
+  background: var(--accent);
+  color: #f4f7f1;
+}
+
+.primary-button:hover {
+  background: var(--accent-strong);
+}
+
+.secondary-button {
+  background: rgba(217, 205, 184, 0.42);
+  color: var(--text);
+}
+
+.danger-button {
+  background: rgba(163, 60, 45, 0.12);
+  color: var(--danger);
+}
+
+@media (max-width: 720px) {
+  .layout {
+    padding: 24px 14px 40px;
+  }
+
+  .panel-header,
+  .rule-top,
+  .switch-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  h1 {
+    font-size: 32px;
+  }
+}

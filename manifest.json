@@ -1,11 +1,16 @@
 {
   "manifest_version": 3,
   "name": "TidyPaper",
-  "description": "Route recognized paper PDFs into Downloads/Papers.",
-  "version": "0.1.0",
+  "description": "Route recognized paper PDFs into categorized folders under Downloads/Papers.",
+  "version": "0.2.0",
   "permissions": [
-    "downloads"
+    "downloads",
+    "storage"
   ],
+  "options_ui": {
+    "page": "options.html",
+    "open_in_tab": true
+  },
   "background": {
     "service_worker": "background.js"
   }

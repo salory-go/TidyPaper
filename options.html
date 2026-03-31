@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>TidyPaper Rules</title>
+    <link rel="stylesheet" href="options.css">
+  </head>
+  <body>
+    <main class="layout">
+      <section class="hero">
+        <p class="eyebrow">TidyPaper</p>
+        <h1>Routing Rules</h1>
+        <p class="intro">
+          Recognized paper PDFs can be routed into <code>Downloads/Papers/&lt;Category&gt;/&lt;Year&gt;</code>.
+          Rules are evaluated from top to bottom and the first match wins.
+        </p>
+      </section>
+
+      <section class="panel">
+        <div class="panel-header">
+          <div>
+            <h2>Saved Rules</h2>
+            <p class="panel-copy">Match by source domain and/or filename or URL keywords.</p>
+          </div>
+          <button id="newRuleButton" class="secondary-button" type="button">New Rule</button>
+        </div>
+
+        <p id="status" class="status" role="status" aria-live="polite"></p>
+        <p id="emptyState" class="empty-state">No rules yet. Add one below to start routing papers into categories.</p>
+        <ol id="ruleList" class="rule-list"></ol>
+      </section>
+
+      <section class="panel">
+        <h2 id="formTitle">Create Rule</h2>
+        <form id="ruleForm" class="rule-form">
+          <label class="switch-row" for="enabled">
+            <span>Rule enabled</span>
+            <input id="enabled" name="enabled" type="checkbox" checked>
+          </label>
+
+          <label for="name">Rule name</label>
+          <input id="name" name="name" type="text" maxlength="80" placeholder="Springer Radiology">
+
+          <label for="category">Category</label>
+          <input id="category" name="category" type="text" maxlength="80" placeholder="Radiology" required>
+
+          <label for="domains">Domains</label>
+          <input id="domains" name="domains" type="text" placeholder="link.springer.com, springernature.com">
+
+          <label for="keywords">Keywords</label>
+          <input id="keywords" name="keywords" type="text" placeholder="radiology, imaging">
+
+          <p class="field-help">
+            Fill at least one of Domains or Keywords. Category becomes the middle folder name.
+          </p>
+
+          <div class="form-actions">
+            <button class="primary-button" type="submit">Save Rule</button>
+            <button id="resetButton" class="secondary-button" type="button">Reset</button>
+          </div>
+        </form>
+      </section>
+    </main>
+
+    <script src="options.js"></script>
+  </body>
+</html>
